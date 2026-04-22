@@ -1,0 +1,47 @@
+.cm-s-obsidian .token.comment,
+.markdown-rendered .language-templ .token.comment {
+  color: var(--code-comment, #6a9955);
+  font-style: italic;
+}
+
+.cm-s-obsidian .token.keyword,
+.markdown-rendered .language-templ .token.keyword {
+  color: var(--code-keyword, #c586c0);
+  font-weight: 600;
+}
+
+.cm-s-obsidian .token.string,
+.markdown-rendered .language-templ .token.string {
+  color: var(--code-string, #ce9178);
+}
+
+.cm-s-obsidian .token.number,
+.markdown-rendered .language-templ .token.number {
+  color: var(--code-value, #b5cea8);
+}
+
+.cm-s-obsidian .token.function,
+.markdown-rendered .language-templ .token.function {
+  color: var(--code-function, #dcdcaa);
+}
+
+.cm-s-obsidian .token.operator,
+.markdown-rendered .language-templ .token.operator {
+  color: var(--code-operator, #d4d4d4);
+}
+
+.cm-s-obsidian .token.punctuation,
+.markdown-rendered .language-templ .token.punctuation {
+  color: var(--code-punctuation, #808080);
+}
+
+.cm-s-obsidian .token.boolean,
+.markdown-rendered .language-templ .token.boolean {
+  color: var(--code-important, #569cd6);
+}
+
+.cm-s-obsidian .token.interpolation-punctuation,
+.markdown-rendered .language-templ .token.interpolation-punctuation {
+  color: var(--code-tag, #569cd6);
+  font-weight: 600;
+}

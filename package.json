@@ -1,0 +1,28 @@
+{
+  "name": "obsidian-templ-plugin",
+  "version": "1.0.0",
+  "description": "Syntax highlighting for Go's TEMPL language in Obsidian.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit && node esbuild.config.mjs production",
+    "test": "vitest run"
+  },
+  "keywords": ["obsidian", "plugin", "templ", "go", "syntax-highlighting"],
+  "author": "JohnPostlethwait",
+  "license": "MIT",
+  "devDependencies": {
+    "@codemirror/language": "^6.10.0",
+    "@codemirror/state": "^6.4.0",
+    "@codemirror/view": "^6.26.0",
+    "@types/node": "^20.11.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.20.0",
+    "obsidian": "latest",
+    "prismjs": "^1.29.0",
+    "@types/prismjs": "^1.26.3",
+    "tslib": "^2.6.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
+  }
+}

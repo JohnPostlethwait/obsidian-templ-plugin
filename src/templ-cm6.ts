@@ -3,8 +3,15 @@ import { RangeSetBuilder } from "@codemirror/state";
 import type PrismNs from "prismjs";
 import { templGrammar } from "./templ-prism";
 
-const FENCE_RE = /^```templ\s*$/;
-const FENCE_END_RE = /^```\s*$/;
+const FENCE_RE = /^\s*```templ\s*$/;
+const FENCE_END_RE = /^\s*```\s*$/;
+
+const WRAPPER_TYPES = new Set([
+  "html-tag",
+  "component-definition",
+  "component-call",
+  "interpolation"
+]);
 
 function getPrism(): typeof PrismNs | undefined {
   if (typeof window === "undefined") return undefined;
@@ -74,7 +81,7 @@ function emitTokens(
       walk(token.content as PrismNs.Token, type);
     }
     const end = pos;
-    if (type && end > start) {
+    if (type && end > start && !WRAPPER_TYPES.has(type)) {
       ranges.push({ from: start, to: end, cls: classForType(type) });
     }
   };

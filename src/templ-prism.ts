@@ -49,7 +49,7 @@ export function registerTemplGrammar(prism?: PrismLike): void {
     console.warn("[templ-syntax] Prism not found; reading-mode highlighting disabled.");
     return;
   }
-  const interp = templGrammar.interpolation as any;
+  const interp = (templGrammar as Record<string, unknown>)["interpolation"] as any;
   if (interp && interp.inside && P.languages.go) {
     interp.inside.rest = P.languages.go;
   }

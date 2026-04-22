@@ -55,4 +55,29 @@ describe("templ grammar", () => {
   it("tokenizes interpolation punctuation", () => {
     expect(tokenTypes("templ X() { { name } }")).toContain("interpolation");
   });
+
+  it("tokenizes HTML tag names", () => {
+    expect(tokenTypes('<div class="x">')).toContain("tag-name");
+  });
+
+  it("tokenizes HTML attribute names", () => {
+    expect(tokenTypes('<a href="#">')).toContain("attr-name");
+  });
+
+  it("tokenizes Go builtin types as builtin", () => {
+    expect(tokenTypes("templ F(name string) {}")).toContain("builtin");
+  });
+
+  it("captures function parameter names", () => {
+    expect(tokenTypes("templ F(name string) {}")).toContain("parameter");
+  });
+
+  it("colors plain identifiers as variables", () => {
+    expect(tokenTypes("items := foo")).toContain("variable");
+  });
+
+  it("colors identifiers inside interpolation as variables", () => {
+    const types = tokenTypes("{ name }");
+    expect(types).toContain("variable");
+  });
 });

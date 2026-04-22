@@ -25,19 +25,70 @@ export const templGrammar: PrismNs.Grammar = {
       punctuation: /@/
     }
   },
+  "html-tag": {
+    pattern: /<\/?[a-zA-Z][a-zA-Z0-9-]*(?:\s+(?:"[^"]*"|'[^']*'|\{[^}]*\}|[^>"'])*)?\/?>/,
+    greedy: true,
+    inside: {
+      "tag-name": {
+        pattern: /<\/?[a-zA-Z][a-zA-Z0-9-]*/,
+        inside: {
+          punctuation: /<\/?/,
+          tag: /[a-zA-Z][a-zA-Z0-9-]*/
+        }
+      },
+      "attr-name": /\b[a-zA-Z_][a-zA-Z0-9_-]*(?=\s*=)/,
+      "attr-value": {
+        pattern: /=\s*(?:"[^"]*"|'[^']*'|\{[^}]*\})/,
+        inside: {
+          punctuation: /^=/,
+          string: /"[^"]*"|'[^']*'/,
+          interpolation: {
+            pattern: /\{[^}]*\}/,
+            inside: {
+              "interpolation-punctuation": {
+                pattern: /^\{|\}$/,
+                alias: "punctuation"
+              },
+              variable: /\b[a-zA-Z_]\w*\b/
+            }
+          }
+        }
+      },
+      "tag-punctuation": {
+        pattern: /\/?>/,
+        alias: "punctuation"
+      }
+    }
+  },
   interpolation: {
     pattern: /\{[^{}\n]*\}/,
+    greedy: true,
     inside: {
       "interpolation-punctuation": {
         pattern: /^\{|\}$/,
         alias: "punctuation"
       },
-      rest: undefined as unknown as PrismNs.Grammar
+      string: /"(?:\\.|[^"\\])*"/,
+      keyword: /\b(?:func|return|if|else|for|range|nil)\b/,
+      boolean: /\b(?:true|false)\b/,
+      number: /\b\d+(?:\.\d+)?\b/,
+      function: /\b[a-zA-Z_]\w*(?=\s*\()/,
+      variable: /\b[a-zA-Z_]\w*\b/,
+      operator: /[+\-*/%=<>!&|^~?:]+/,
+      punctuation: /[(),.]/
     }
   },
+  parameter: {
+    pattern: /([(,]\s*)[a-z_]\w*(?=\s+[a-zA-Z_*\[])/,
+    lookbehind: true,
+    alias: "variable"
+  },
   keyword: /\b(?:templ|script|css|if|else|for|switch|case|default|return|package|import|var|range|func|type|struct|interface)\b/,
+  builtin: /\b(?:string|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|uintptr|byte|rune|bool|float32|float64|complex64|complex128|any|error|map|chan)\b/,
   boolean: /\b(?:true|false|nil)\b/,
   number: /\b\d+(?:\.\d+)?\b/,
+  function: /\b[a-zA-Z_]\w*(?=\s*\()/,
+  variable: /\b[a-zA-Z_]\w*\b/,
   operator: /[+\-*/%=<>!&|^~?:]+/,
   punctuation: /[{}[\]();,.]/
 };
@@ -48,10 +99,6 @@ export function registerTemplGrammar(prism?: PrismLike): void {
   if (!P) {
     console.warn("[templ-syntax] Prism not found; reading-mode highlighting disabled.");
     return;
-  }
-  const interp = (templGrammar as Record<string, unknown>)["interpolation"] as any;
-  if (interp && interp.inside && P.languages.go) {
-    interp.inside.rest = P.languages.go;
   }
   P.languages.templ = templGrammar;
 }

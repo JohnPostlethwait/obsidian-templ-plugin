@@ -6,7 +6,16 @@
       "Bash(git commit *)",
       "Bash(git symbolic-ref *)",
       "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add design spec for TEMPL syntax highlighting plugin\")",
-      "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add implementation plan for TEMPL syntax highlighting plugin\")"
+      "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add implementation plan for TEMPL syntax highlighting plugin\")",
+      "Bash(npm install *)",
+      "Bash(npm test *)",
+      "Bash(node -e ' *)",
+      "Bash(npm run *)",
+      "Bash(node -e \"const s=require\\('fs'\\).readFileSync\\('main.js','utf8'\\); if\\(!s.includes\\('templGrammar'\\)\\) process.exit\\(1\\); console.log\\('ok'\\);\")",
+      "Bash(node -e \"const s=require\\('fs'\\).readFileSync\\('main.js','utf8'\\); const patterns = ['component-definition', 'component-call', 'interpolation']; if\\(!patterns.every\\(p => s.includes\\(p\\)\\)\\) { console.log\\('Missing pattern'\\); process.exit\\(1\\); } console.log\\('ok'\\);\")",
+      "Bash(echo \"Build exit: $?\")",
+      "Bash(gh auth *)",
+      "Bash(gh release *)"
     ]
   }
 }

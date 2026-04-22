@@ -1,6 +1,6 @@
 {
   "name": "obsidian-templ-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Syntax highlighting for Go's TEMPL language in Obsidian.",
   "main": "main.js",
   "scripts": {

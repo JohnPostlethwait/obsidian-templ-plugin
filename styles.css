@@ -45,3 +45,32 @@
   color: var(--code-tag, #569cd6);
   font-weight: 600;
 }
+
+.cm-s-obsidian .token.tag-name,
+.cm-s-obsidian .token.tag-name .token.tag,
+.markdown-rendered .language-templ .token.tag-name,
+.markdown-rendered .language-templ .token.tag-name .token.tag {
+  color: var(--code-tag, #569cd6);
+}
+
+.cm-s-obsidian .token.attr-name,
+.markdown-rendered .language-templ .token.attr-name {
+  color: var(--code-property, #9cdcfe);
+}
+
+.cm-s-obsidian .token.attr-value,
+.markdown-rendered .language-templ .token.attr-value {
+  color: var(--code-string, #ce9178);
+}
+
+.cm-s-obsidian .token.builtin,
+.markdown-rendered .language-templ .token.builtin {
+  color: var(--code-type, #4ec9b0);
+}
+
+.cm-s-obsidian .token.variable,
+.cm-s-obsidian .token.parameter,
+.markdown-rendered .language-templ .token.variable,
+.markdown-rendered .language-templ .token.parameter {
+  color: var(--code-normal, #9cdcfe);
+}

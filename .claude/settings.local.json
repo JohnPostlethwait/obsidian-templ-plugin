@@ -5,7 +5,8 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git symbolic-ref *)",
-      "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add design spec for TEMPL syntax highlighting plugin\")"
+      "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add design spec for TEMPL syntax highlighting plugin\")",
+      "Bash(git -c user.email=johnpostlethwait@fastmail.com -c user.name=JohnPostlethwait commit -m \"Add implementation plan for TEMPL syntax highlighting plugin\")"
     ]
   }
 }
